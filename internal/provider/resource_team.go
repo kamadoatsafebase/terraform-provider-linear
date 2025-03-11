@@ -1037,10 +1037,6 @@ func (r *TeamResource) Update(ctx context.Context, req resource.UpdateRequest, r
 	input.IssueEstimationAllowZero = estimationData.AllowZero.ValueBool()
 	input.DefaultIssueEstimate = estimationData.Default.ValueFloat64()
 
-	if input.CyclesEnabled {
-		input.CycleEnabledStartWeek = "nextWeek"
-	}
-
 	response, err := updateTeam(ctx, *r.client, input, state.Key.ValueString())
 
 	if err != nil {
